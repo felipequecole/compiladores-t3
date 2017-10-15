@@ -10,7 +10,7 @@ Time {
   esquema: 4-5-1; //unico atributo obrigatório
   treinador: "Zé Ricardo";
   goleiro: "Martin Silva";
-  defensores: ["Madson","Breno","Anderson","Ramon"]; // se botar menos ou mais que 4, erro
+  defensores: ["Ramon","Anderson","Breno","Madson"]; // se botar menos ou mais que 4, erro
   meiocampistas:["Jean","Wellington","Wagner","Nenê","Matheus"];
   atacantes: ["Thalles"];
   compactacao: 30  //mostrar em escala, a distancia em metros do ultimo homem até o primeiro homem

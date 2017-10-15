@@ -5,18 +5,19 @@ dec_podicionamento: 'declare' 'posicionamento' IDENT '{'
 		'atacantes' ':' '[' espacamento',' direcao',' direcao ']';
 '}';
 
-time:'Time''{' comando_time* 'esquema:' INT'-'INT'-'INT';' comando_time* '}';
+time:'Time' '{' ('nome:' CADEIA ';')? 'esquema:' INT'-'INT'-'INT';' comando_time* '}';
 
-comando_time: 'nome:' CADEIA;|
-		'treinador:' CADEIA;|
-		'goleiro:' CADEIA;|
-		'defensores:' [CADEIA,(' ' CADEIA)*]|
-		'meiocampistas:'[CADEIA,(' ' CADEIA)*]|
-		'atacantes:'[CADEIA,(' ' CADEIA)*]|
-		'compactacao:' INT;
+comando_time: 	'treinador:' CADEIA ';'|
+		escalacao |
+		'compactacao:' INT ';' ;
+
+escalacao: 	'goleiro:' CADEIA ';' 
+		'defensores:' [CADEIA (', ' CADEIA)*] ';'
+		'meiocampistas:'[CADEIA,(', ' CADEIA)*] ';'
+		'atacantes:'[CADEIA (', ' CADEIA)*] ';' 
 
 tatica: 'Tatica''{'
-		comando_tatico: 'nome:' CADEIA ';'
+		'nome:' CADEIA ';'
 		'defensores:[' posicionamento ',' posicionamento'];'
 		'meiocampistas:['posicionamento ',' posicionamento'];'
 		'atacantes:[' posicionamento ',' posicionamento'];';

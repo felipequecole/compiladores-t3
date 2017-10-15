@@ -1,4 +1,4 @@
-declare Time {
+Time {
   nome: Vasco;
   esquema: 4-5-1; //unico atributo obrigatório
   treinador: "Zé Ricardo";
@@ -9,11 +9,11 @@ declare Time {
   compactacao: 30  //mostrar em escala, a distancia em metros do ultimo homem até o primeiro homem
 }
 
-declare Tatica {
+Tatica {
   nome : "abre campo"
   defensores[pressao, pressao]; // o que faz quando ta com a bola e sem a bola, respectivamente
   meiocampistas [espacado, pressao];    // os atributos sao do tipo Posicionamento
-  atacantes [recompoe];
+  atacantes [mantem_posicao,recompoe];
 }
 
 declare Posicionamento{

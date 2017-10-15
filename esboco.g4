@@ -12,9 +12,9 @@ comando_time: 	'treinador:' CADEIA ';'|
 		'compactacao:' INT ';' ;
 
 escalacao: 	'goleiro:' CADEIA ';' 
-		'defensores:' [CADEIA (', ' CADEIA)*] ';'
-		'meiocampistas:'[CADEIA,(', ' CADEIA)*] ';'
-		'atacantes:'[CADEIA (', ' CADEIA)*] ';' 
+		'defensores:' '['CADEIA (', ' CADEIA)*']' ';'
+		'meiocampistas:' '['CADEIA,(', ' CADEIA)*']' ';'
+		'atacantes:' '['CADEIA (', ' CADEIA)*']' ';' 
 
 tatica: 'Tatica''{'
 		'nome:' CADEIA ';'

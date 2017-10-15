@@ -5,11 +5,11 @@ dec_podicionamento: 'declare' 'posicionamento' IDENT '{'
 		'atacantes' ':' '[' espacamento',' direcao',' direcao ']';
 '}';
 
-time:'Time' '{' ('nome:' CADEIA ';')? 'esquema:' INT'-'INT'-'INT';' comando_time* '}';
+time:'Time' '{' ('nome:' CADEIA ';')? 'esquema:' INT'-'INT'-'INT';' (comando_time)?'}';
 
-comando_time: 	'treinador:' CADEIA ';'|
-		escalacao |
-		'compactacao:' INT ';' ;
+comando_time: 	('treinador:' CADEIA ';')?
+		(escalacao)? 
+		('compactacao:' INT ';')? ;
 
 escalacao: 	'goleiro:' CADEIA ';' 
 		'defensores:' '['CADEIA (', ' CADEIA)*']' ';'

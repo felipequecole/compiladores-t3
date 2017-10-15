@@ -1,7 +1,12 @@
 
 
 
-programa: "declare" time "declare" tatica "declare" posicionamento;
+programa: dec_posicionamento* "declare" time "declare" tatica;
+dec_podicionamento: "declare" "posicionamento" IDENT"{"
+	"defensores" ":" "[" espacamento"," direcao"," direcao "]";
+	"meiocampista" ":" "[" espacamento"," direcao"," direcao "]";
+	"atacantes" ":" "[" espacamento"," direcao"," direcao "]";
+"}";
 
 time:"{" comando_time* "esquema:" INT"-"INT"-"INT";" comando_time* "}";
 comando_time: "nome:" CADEIA;|
@@ -12,7 +17,7 @@ comando_time: "nome:" CADEIA;|
 	"atacantes:"[CADEIA,(" " CADEIA)*]|
 	"compactacao:" INT;
 
-tatica: "{" 
+tatica: "{"
 	comando_tatica+
 "}"
 
@@ -22,4 +27,3 @@ comando_tatico: "nome:" CADEIA;|
 	"atacantes:[" pal_reservada_tatica  (",pal_reservada_tatica)* "];";
 
 posicionamento...
-

@@ -1,0 +1,24 @@
+declare Time {
+  nome: Vasco;
+  esquema: 4-5-1; //unico atributo obrigatório
+  treinador: "Zé Ricardo";
+  goleiro: "Martin Silva";
+  defensores: ["Madson","Breno","Anderson","Ramon"]; // se botar menos ou mais que 4, erro
+  meiocampistas:["Jean","Wellington","Wagner","Nenê","Matheus"];
+  atacantes: ["Thalles"];
+  compactacao: 30  //mostrar em escala, a distancia em metros do ultimo homem até o primeiro homem
+}
+
+declare Tatica {
+  nome : "abre campo"
+  defensores[pressao, pressao]; // o que faz quando ta com a bola e sem a bola, respectivamente
+  meiocampistas [espacado, pressao];    // os atributos sao do tipo Posicionamento
+  atacantes [recompoe];
+}
+
+declare Posicionamento{
+  defensores: [compacto, bola, linha];   //espaçamento entre eles e direção da movimentação com bola e sem
+  meiocampistas: [esparsos, bola, bola]; // de um tipo basico que nao dá pra instanciar um novo
+  atacantes [compacto, falso9, tras];
+
+}

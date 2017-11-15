@@ -8,21 +8,21 @@ programa: time taticas esquemas+;
 time: 'Time''{' nome_time
 								treinador_time?
 								conjunto_jogadores?
-								('compactacao:' INT ) '}';
+								'compactacao:' INT '}';
 
 nome_time: 'Nome:' CADEIA;
 
-treinador_time: 'Treinador:' CADEIA ;
+treinador_time: 'Treinador'':' CADEIA ;
 
-conjunto_jogadores: 'Goleiro:' 	CADEIA
-										'Jogadores de linha:' CADEIA (',' CADEIA)*;
+conjunto_jogadores: 'Goleiro' ':' CADEIA |
+										'Jogadores de linha'':' CADEIA (',' CADEIA)*;
 
 taticas: 'Taticas''{'
 		(IDENT'('posicionamento','posicionamento','espacamento')')+
 '}';
 
 esquemas: 'Esquema' CADEIA '{'
- 					(IDENT '('conteudo_esquema')')+
+ 					(conteudo_esquema':' IDENT )+
 					 '}';
 
 

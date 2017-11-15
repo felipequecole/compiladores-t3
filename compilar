@@ -1,0 +1,2 @@
+java -jar ./lib/antlr-4.7-complete.jar -visitor -o ./ t3/src/Tira_teima.g4 &&
+javac -cp ./lib/*.jar -d ./  t3/src/*.java 

@@ -1,5 +1,4 @@
 // Generated from t3/src/Tira_teima.g4 by ANTLR 4.7
-package t3;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;

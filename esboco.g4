@@ -1,30 +1,42 @@
 grammar Tira_teima;
 
-programa: dec_posicionamento*  time tatica;
-dec_podicionamento: 'declare' 'posicionamento' IDENT '{'
-		'defensores' ':' '[' espacamento',' direcao',' direcao ']' ';'
-		'meiocampista' ':' '[' espacamento',' direcao',' direcao ']'';'
-		'atacantes' ':' '[' espacamento',' direcao',' direcao ']'';'
+programa: time taticas esquemas+;
+
+/* estou colocando tudo em regras para facilitar a detecção na geraçao
+	 de imagens */
+
+time: 'Time''{' nome_time
+								treinador_time?
+								conjunto_jogadores?
+								('compactacao:' INT ) '}';
+
+nome_time: 'Nome:' CADEIA;
+
+treinador_time: 'Treinador:' CADEIA ;
+
+conjunto_jogadores: 'Goleiro:' 	CADEIA
+										'Jogadores de linha:' CADEIA (',' CADEIA)*;
+
+taticas: 'Taticas''{'
+		(IDENT'('posicionamento','posicionamento','espacamento')')+
 '}';
 
-time:'Time' '{' ('nome:' CADEIA ';')? 'esquema:' INT'-'INT'-'INT';' (comando_time)?'}';
+esquemas: 'Esquema' CADEIA '{'
+ 					(IDENT '('conteudo_esquema')')+
+					 '}';
 
-comando_time: 	('treinador:' CADEIA ';')?
-		(escalacao)? 
-		('compactacao:' INT ';')? ;
 
-escalacao: 	'goleiro:' CADEIA ';' 
-		'defensores:' '['CADEIA (', ' CADEIA)*']' ';'
-		'meiocampistas:' '['CADEIA,(', ' CADEIA)*']' ';'
-		'atacantes:' '['CADEIA (', ' CADEIA)*']' ';';
+conteudo_esquema: CADEIA (',' CADEIA)* | '['INT']';
 
-tatica: 'Tatica''{'
-		'nome:' CADEIA ';'
-		'defensores:[' posicionamento ',' posicionamento'];'
-		'meiocampistas:['posicionamento ',' posicionamento'];'
-		'atacantes:[' posicionamento ',' posicionamento'];' ';'
-'}';
+posicionamento: 'pressao'|'bola'|'flanco_direito'|'flanco_esquerdo'|'protege_gol'
+								'faixa_central'|'NULO';
 
-posicionamento: IDENT|'recompoe';
-direcao: 'bola'| 'linha'|'falso9'|'tras';
-espacamento: 'compacto'| 'esparsos';
+espacamento: 'agrupados'| 'esparsos';
+
+INT: ('-')? '0'..'9' ('0'..'9')* ;
+
+IDENT	:	('a'..'z' | 'A'..'Z' | '_') ('a'..'z' | 'A'..'Z' | '0'..'9' | '_')*;
+
+CADEIA	:	'"' ~('\n' | '\r' | '\'')* '\'' | '"' ~('\n' | '\r' | '"')* '"';
+
+WS	:	(' ' | '\t' | '\r' | '\n') -> skip;

@@ -1,27 +1,28 @@
 
 Time{
 Nome: "perebas"
-Goleiro: "jamelão"
-Jogadores: "1,2,3,4,5,6,7,8,9,10"
-Tecnico: "pofexo"
+Treinador: "pofexo"
+Goleiro: "jamelao"
+Jogadores_de_linha: "1","2","3","4","5","6","7","8","9","10"
+compactacao: 12
 }
 
 
 Taticas{
-defesa_pressao(pressao, pressao, espaçado)
-defesa_carille(posicionado, posicionado, compacto)
-defesa_aprovado(flanco, flanco, compacto)
+defesa_pressao(pressao, pressao, esparsos)
+defesa_carille(flanco_direito, flanco_direito, agrupados)
+defesa_aprovado(flanco_esquerdo, flanco_esquerdo, agrupados)
 }
 
 Esquema x{
-defesa_pressao("2","5","6","8")
-defesa_pressao("1","9","3")
-defesa_pressao("4","7","10")
+"2","5","6","8" : defesa_pressao
+"1","9","3":defesa_pressao
+"4","7","10":defesa_pressao
 }
 
 
 Esquema y{
-defesa_carille("2","5","6","8")
-defesa_pressao("1","9","3")
-defesa_aprovado("4","7","10")
+"2","5","6","8":defesa_carille
+"1","9","3":defesa_pressao
+"4","7","10":defesa_aprovado
 }

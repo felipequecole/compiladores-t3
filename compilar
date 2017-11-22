@@ -4,7 +4,9 @@ then
   echo "Criando Diretorio 'build'"
   mkdir build
 fi
-echo "Gerando arquivos .java"
+echo "Gerando arquivos .java ..."
 java -jar ./lib/antlr-4.7-complete.jar -visitor -package t3 -o ./ t3/src/Tira_teima.g4 &&
-echo "Compilando arquivos .java"
-javac -cp ./lib/*.jar -d ./build t3/src/*.java
+echo "Compilando arquivos .java .." &&
+javac -cp ./lib/*.jar -d ./build t3/src/*.java &&
+echo "Gerando jar ..." &&
+jar -cfm t3.jar t3/src/Manifest.txt -C build t3

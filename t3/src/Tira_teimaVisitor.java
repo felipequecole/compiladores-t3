@@ -1,4 +1,5 @@
 // Generated from t3/src/Tira_teima.g4 by ANTLR 4.7
+package t3;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -33,6 +34,12 @@ public interface Tira_teimaVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitTreinador_time(Tira_teimaParser.Treinador_timeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link Tira_teimaParser#goleiro}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitGoleiro(Tira_teimaParser.GoleiroContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link Tira_teimaParser#conjunto_jogadores}.
 	 * @param ctx the parse tree

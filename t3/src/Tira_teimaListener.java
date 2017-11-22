@@ -1,4 +1,5 @@
 // Generated from t3/src/Tira_teima.g4 by ANTLR 4.7
+package t3;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -46,6 +47,16 @@ public interface Tira_teimaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitTreinador_time(Tira_teimaParser.Treinador_timeContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link Tira_teimaParser#goleiro}.
+	 * @param ctx the parse tree
+	 */
+	void enterGoleiro(Tira_teimaParser.GoleiroContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Tira_teimaParser#goleiro}.
+	 * @param ctx the parse tree
+	 */
+	void exitGoleiro(Tira_teimaParser.GoleiroContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link Tira_teimaParser#conjunto_jogadores}.
 	 * @param ctx the parse tree

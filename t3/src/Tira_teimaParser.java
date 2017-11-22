@@ -1,4 +1,5 @@
 // Generated from t3/src/Tira_teima.g4 by ANTLR 4.7
+package t3;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -19,19 +20,19 @@ public class Tira_teimaParser extends Parser {
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
 		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, 
 		T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, T__23=24, 
-		INT=25, IDENT=26, CADEIA=27, WS=28;
+		T__24=25, INT=26, IDENT=27, CADEIA=28, WS=29;
 	public static final int
 		RULE_programa = 0, RULE_time = 1, RULE_nome_time = 2, RULE_treinador_time = 3, 
-		RULE_conjunto_jogadores = 4, RULE_taticas = 5, RULE_esquemas = 6, RULE_conteudo_esquema = 7, 
-		RULE_posicionamento = 8, RULE_espacamento = 9;
+		RULE_goleiro = 4, RULE_conjunto_jogadores = 5, RULE_taticas = 6, RULE_esquemas = 7, 
+		RULE_conteudo_esquema = 8, RULE_posicionamento = 9, RULE_espacamento = 10;
 	public static final String[] ruleNames = {
-		"programa", "time", "nome_time", "treinador_time", "conjunto_jogadores", 
+		"programa", "time", "nome_time", "treinador_time", "goleiro", "conjunto_jogadores", 
 		"taticas", "esquemas", "conteudo_esquema", "posicionamento", "espacamento"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
-		null, "'Time'", "'{'", "'compactacao:'", "'}'", "'Nome:'", "'Treinador:'", 
-		"'Goleiro:'", "'Jogadores de linha:'", "','", "'Taticas'", "'('", "')'", 
+		null, "'Time'", "'{'", "'compactacao'", "':'", "'}'", "'Nome'", "'Treinador'", 
+		"'Goleiro'", "'Jogadores_de_linha'", "','", "'Taticas'", "'('", "')'", 
 		"'Esquema'", "'['", "']'", "'pressao'", "'bola'", "'flanco_direito'", 
 		"'flanco_esquerdo'", "'protege_gol'", "'faixa_central'", "'NULO'", "'agrupados'", 
 		"'esparsos'"
@@ -39,7 +40,7 @@ public class Tira_teimaParser extends Parser {
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, null, null, null, null, null, null, null, null, null, null, null, 
 		null, null, null, null, null, null, null, null, null, null, null, null, 
-		null, "INT", "IDENT", "CADEIA", "WS"
+		null, null, "INT", "IDENT", "CADEIA", "WS"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -129,24 +130,24 @@ public class Tira_teimaParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(20);
+			setState(22);
 			time();
-			setState(21);
+			setState(23);
 			taticas();
-			setState(23); 
+			setState(25); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(22);
+				setState(24);
 				esquemas();
 				}
 				}
-				setState(25); 
+				setState(27); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( _la==T__12 );
+			} while ( _la==T__13 );
 			}
 		}
 		catch (RecognitionException re) {
@@ -167,6 +168,9 @@ public class Tira_teimaParser extends Parser {
 		public TerminalNode INT() { return getToken(Tira_teimaParser.INT, 0); }
 		public Treinador_timeContext treinador_time() {
 			return getRuleContext(Treinador_timeContext.class,0);
+		}
+		public GoleiroContext goleiro() {
+			return getRuleContext(GoleiroContext.class,0);
 		}
 		public Conjunto_jogadoresContext conjunto_jogadores() {
 			return getRuleContext(Conjunto_jogadoresContext.class,0);
@@ -197,40 +201,50 @@ public class Tira_teimaParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(27);
-			match(T__0);
-			setState(28);
-			match(T__1);
 			setState(29);
-			nome_time();
+			match(T__0);
+			setState(30);
+			match(T__1);
 			setState(31);
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			if (_la==T__5) {
-				{
-				setState(30);
-				treinador_time();
-				}
-			}
-
-			setState(34);
+			nome_time();
+			setState(33);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==T__6) {
 				{
-				setState(33);
+				setState(32);
+				treinador_time();
+				}
+			}
+
+			setState(36);
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			if (_la==T__7) {
+				{
+				setState(35);
+				goleiro();
+				}
+			}
+
+			setState(39);
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			if (_la==T__8) {
+				{
+				setState(38);
 				conjunto_jogadores();
 				}
 			}
 
-			{
-			setState(36);
+			setState(41);
 			match(T__2);
-			setState(37);
-			match(INT);
-			}
-			setState(39);
+			setState(42);
 			match(T__3);
+			setState(43);
+			match(INT);
+			setState(44);
+			match(T__4);
 			}
 		}
 		catch (RecognitionException re) {
@@ -271,9 +285,11 @@ public class Tira_teimaParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(41);
-			match(T__4);
-			setState(42);
+			setState(46);
+			match(T__5);
+			setState(47);
+			match(T__3);
+			setState(48);
 			match(CADEIA);
 			}
 		}
@@ -315,9 +331,57 @@ public class Tira_teimaParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(44);
-			match(T__5);
-			setState(45);
+			setState(50);
+			match(T__6);
+			setState(51);
+			match(T__3);
+			setState(52);
+			match(CADEIA);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class GoleiroContext extends ParserRuleContext {
+		public TerminalNode CADEIA() { return getToken(Tira_teimaParser.CADEIA, 0); }
+		public GoleiroContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_goleiro; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof Tira_teimaListener ) ((Tira_teimaListener)listener).enterGoleiro(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof Tira_teimaListener ) ((Tira_teimaListener)listener).exitGoleiro(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof Tira_teimaVisitor ) return ((Tira_teimaVisitor<? extends T>)visitor).visitGoleiro(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final GoleiroContext goleiro() throws RecognitionException {
+		GoleiroContext _localctx = new GoleiroContext(_ctx, getState());
+		enterRule(_localctx, 8, RULE_goleiro);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(54);
+			match(T__7);
+			setState(55);
+			match(T__3);
+			setState(56);
 			match(CADEIA);
 			}
 		}
@@ -358,32 +422,30 @@ public class Tira_teimaParser extends Parser {
 
 	public final Conjunto_jogadoresContext conjunto_jogadores() throws RecognitionException {
 		Conjunto_jogadoresContext _localctx = new Conjunto_jogadoresContext(_ctx, getState());
-		enterRule(_localctx, 8, RULE_conjunto_jogadores);
+		enterRule(_localctx, 10, RULE_conjunto_jogadores);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(47);
-			match(T__6);
-			setState(48);
+			setState(58);
+			match(T__8);
+			setState(59);
+			match(T__3);
+			setState(60);
 			match(CADEIA);
-			setState(49);
-			match(T__7);
-			setState(50);
-			match(CADEIA);
-			setState(55);
+			setState(65);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==T__8) {
+			while (_la==T__9) {
 				{
 				{
-				setState(51);
-				match(T__8);
-				setState(52);
+				setState(61);
+				match(T__9);
+				setState(62);
 				match(CADEIA);
 				}
 				}
-				setState(57);
+				setState(67);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -438,45 +500,45 @@ public class Tira_teimaParser extends Parser {
 
 	public final TaticasContext taticas() throws RecognitionException {
 		TaticasContext _localctx = new TaticasContext(_ctx, getState());
-		enterRule(_localctx, 10, RULE_taticas);
+		enterRule(_localctx, 12, RULE_taticas);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(58);
-			match(T__9);
-			setState(59);
+			setState(68);
+			match(T__10);
+			setState(69);
 			match(T__1);
-			setState(69); 
+			setState(79); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(60);
+				setState(70);
 				match(IDENT);
-				setState(61);
-				match(T__10);
-				setState(62);
-				posicionamento();
-				setState(63);
-				match(T__8);
-				setState(64);
-				posicionamento();
-				setState(65);
-				match(T__8);
-				setState(66);
-				espacamento();
-				setState(67);
+				setState(71);
 				match(T__11);
+				setState(72);
+				posicionamento();
+				setState(73);
+				match(T__9);
+				setState(74);
+				posicionamento();
+				setState(75);
+				match(T__9);
+				setState(76);
+				espacamento();
+				setState(77);
+				match(T__12);
 				}
 				}
-				setState(71); 
+				setState(81); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( _la==IDENT );
-			setState(73);
-			match(T__3);
+			setState(83);
+			match(T__4);
 			}
 		}
 		catch (RecognitionException re) {
@@ -491,7 +553,6 @@ public class Tira_teimaParser extends Parser {
 	}
 
 	public static class EsquemasContext extends ParserRuleContext {
-		public TerminalNode CADEIA() { return getToken(Tira_teimaParser.CADEIA, 0); }
 		public List<TerminalNode> IDENT() { return getTokens(Tira_teimaParser.IDENT); }
 		public TerminalNode IDENT(int i) {
 			return getToken(Tira_teimaParser.IDENT, i);
@@ -523,39 +584,37 @@ public class Tira_teimaParser extends Parser {
 
 	public final EsquemasContext esquemas() throws RecognitionException {
 		EsquemasContext _localctx = new EsquemasContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_esquemas);
+		enterRule(_localctx, 14, RULE_esquemas);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(75);
-			match(T__12);
-			setState(76);
-			match(CADEIA);
-			setState(77);
+			setState(85);
+			match(T__13);
+			setState(86);
+			match(IDENT);
+			setState(87);
 			match(T__1);
-			setState(83); 
+			setState(92); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(78);
-				match(IDENT);
-				setState(79);
-				match(T__10);
-				setState(80);
+				setState(88);
 				conteudo_esquema();
-				setState(81);
-				match(T__11);
+				setState(89);
+				match(T__3);
+				setState(90);
+				match(IDENT);
 				}
 				}
-				setState(85); 
+				setState(94); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( _la==IDENT );
-			setState(87);
-			match(T__3);
+			} while ( _la==T__14 || _la==CADEIA );
+			setState(96);
+			match(T__4);
 			}
 		}
 		catch (RecognitionException re) {
@@ -596,44 +655,44 @@ public class Tira_teimaParser extends Parser {
 
 	public final Conteudo_esquemaContext conteudo_esquema() throws RecognitionException {
 		Conteudo_esquemaContext _localctx = new Conteudo_esquemaContext(_ctx, getState());
-		enterRule(_localctx, 14, RULE_conteudo_esquema);
+		enterRule(_localctx, 16, RULE_conteudo_esquema);
 		int _la;
 		try {
-			setState(100);
+			setState(109);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case CADEIA:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(89);
+				setState(98);
 				match(CADEIA);
-				setState(94);
+				setState(103);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				while (_la==T__8) {
+				while (_la==T__9) {
 					{
 					{
-					setState(90);
-					match(T__8);
-					setState(91);
+					setState(99);
+					match(T__9);
+					setState(100);
 					match(CADEIA);
 					}
 					}
-					setState(96);
+					setState(105);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
 				}
 				break;
-			case T__13:
+			case T__14:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(97);
-				match(T__13);
-				setState(98);
-				match(INT);
-				setState(99);
+				setState(106);
 				match(T__14);
+				setState(107);
+				match(INT);
+				setState(108);
+				match(T__15);
 				}
 				break;
 			default:
@@ -673,53 +732,53 @@ public class Tira_teimaParser extends Parser {
 
 	public final PosicionamentoContext posicionamento() throws RecognitionException {
 		PosicionamentoContext _localctx = new PosicionamentoContext(_ctx, getState());
-		enterRule(_localctx, 16, RULE_posicionamento);
+		enterRule(_localctx, 18, RULE_posicionamento);
 		try {
-			setState(109);
+			setState(118);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
-			case T__15:
+			case T__16:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(102);
-				match(T__15);
-				}
-				break;
-			case T__16:
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(103);
+				setState(111);
 				match(T__16);
 				}
 				break;
 			case T__17:
-				enterOuterAlt(_localctx, 3);
+				enterOuterAlt(_localctx, 2);
 				{
-				setState(104);
+				setState(112);
 				match(T__17);
 				}
 				break;
 			case T__18:
-				enterOuterAlt(_localctx, 4);
+				enterOuterAlt(_localctx, 3);
 				{
-				setState(105);
+				setState(113);
 				match(T__18);
 				}
 				break;
 			case T__19:
-				enterOuterAlt(_localctx, 5);
+				enterOuterAlt(_localctx, 4);
 				{
-				setState(106);
+				setState(114);
 				match(T__19);
-				setState(107);
-				match(T__20);
 				}
 				break;
-			case T__21:
+			case T__20:
+				enterOuterAlt(_localctx, 5);
+				{
+				setState(115);
+				match(T__20);
+				setState(116);
+				match(T__21);
+				}
+				break;
+			case T__22:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(108);
-				match(T__21);
+				setState(117);
+				match(T__22);
 				}
 				break;
 			default:
@@ -759,14 +818,14 @@ public class Tira_teimaParser extends Parser {
 
 	public final EspacamentoContext espacamento() throws RecognitionException {
 		EspacamentoContext _localctx = new EspacamentoContext(_ctx, getState());
-		enterRule(_localctx, 18, RULE_espacamento);
+		enterRule(_localctx, 20, RULE_espacamento);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(111);
+			setState(120);
 			_la = _input.LA(1);
-			if ( !(_la==T__22 || _la==T__23) ) {
+			if ( !(_la==T__23 || _la==T__24) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
@@ -788,34 +847,36 @@ public class Tira_teimaParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\36t\4\2\t\2\4\3\t"+
-		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\3"+
-		"\2\3\2\3\2\6\2\32\n\2\r\2\16\2\33\3\3\3\3\3\3\3\3\5\3\"\n\3\3\3\5\3%\n"+
-		"\3\3\3\3\3\3\3\3\3\3\3\3\4\3\4\3\4\3\5\3\5\3\5\3\6\3\6\3\6\3\6\3\6\3\6"+
-		"\7\68\n\6\f\6\16\6;\13\6\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\6"+
-		"\7H\n\7\r\7\16\7I\3\7\3\7\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\6\bV\n\b\r\b"+
-		"\16\bW\3\b\3\b\3\t\3\t\3\t\7\t_\n\t\f\t\16\tb\13\t\3\t\3\t\3\t\5\tg\n"+
-		"\t\3\n\3\n\3\n\3\n\3\n\3\n\3\n\5\np\n\n\3\13\3\13\3\13\2\2\f\2\4\6\b\n"+
-		"\f\16\20\22\24\2\3\3\2\31\32\2v\2\26\3\2\2\2\4\35\3\2\2\2\6+\3\2\2\2\b"+
-		".\3\2\2\2\n\61\3\2\2\2\f<\3\2\2\2\16M\3\2\2\2\20f\3\2\2\2\22o\3\2\2\2"+
-		"\24q\3\2\2\2\26\27\5\4\3\2\27\31\5\f\7\2\30\32\5\16\b\2\31\30\3\2\2\2"+
-		"\32\33\3\2\2\2\33\31\3\2\2\2\33\34\3\2\2\2\34\3\3\2\2\2\35\36\7\3\2\2"+
-		"\36\37\7\4\2\2\37!\5\6\4\2 \"\5\b\5\2! \3\2\2\2!\"\3\2\2\2\"$\3\2\2\2"+
-		"#%\5\n\6\2$#\3\2\2\2$%\3\2\2\2%&\3\2\2\2&\'\7\5\2\2\'(\7\33\2\2()\3\2"+
-		"\2\2)*\7\6\2\2*\5\3\2\2\2+,\7\7\2\2,-\7\35\2\2-\7\3\2\2\2./\7\b\2\2/\60"+
-		"\7\35\2\2\60\t\3\2\2\2\61\62\7\t\2\2\62\63\7\35\2\2\63\64\7\n\2\2\649"+
-		"\7\35\2\2\65\66\7\13\2\2\668\7\35\2\2\67\65\3\2\2\28;\3\2\2\29\67\3\2"+
-		"\2\29:\3\2\2\2:\13\3\2\2\2;9\3\2\2\2<=\7\f\2\2=G\7\4\2\2>?\7\34\2\2?@"+
-		"\7\r\2\2@A\5\22\n\2AB\7\13\2\2BC\5\22\n\2CD\7\13\2\2DE\5\24\13\2EF\7\16"+
-		"\2\2FH\3\2\2\2G>\3\2\2\2HI\3\2\2\2IG\3\2\2\2IJ\3\2\2\2JK\3\2\2\2KL\7\6"+
-		"\2\2L\r\3\2\2\2MN\7\17\2\2NO\7\35\2\2OU\7\4\2\2PQ\7\34\2\2QR\7\r\2\2R"+
-		"S\5\20\t\2ST\7\16\2\2TV\3\2\2\2UP\3\2\2\2VW\3\2\2\2WU\3\2\2\2WX\3\2\2"+
-		"\2XY\3\2\2\2YZ\7\6\2\2Z\17\3\2\2\2[`\7\35\2\2\\]\7\13\2\2]_\7\35\2\2^"+
-		"\\\3\2\2\2_b\3\2\2\2`^\3\2\2\2`a\3\2\2\2ag\3\2\2\2b`\3\2\2\2cd\7\20\2"+
-		"\2de\7\33\2\2eg\7\21\2\2f[\3\2\2\2fc\3\2\2\2g\21\3\2\2\2hp\7\22\2\2ip"+
-		"\7\23\2\2jp\7\24\2\2kp\7\25\2\2lm\7\26\2\2mp\7\27\2\2np\7\30\2\2oh\3\2"+
-		"\2\2oi\3\2\2\2oj\3\2\2\2ok\3\2\2\2ol\3\2\2\2on\3\2\2\2p\23\3\2\2\2qr\t"+
-		"\2\2\2r\25\3\2\2\2\13\33!$9IW`fo";
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\37}\4\2\t\2\4\3\t"+
+		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4"+
+		"\f\t\f\3\2\3\2\3\2\6\2\34\n\2\r\2\16\2\35\3\3\3\3\3\3\3\3\5\3$\n\3\3\3"+
+		"\5\3\'\n\3\3\3\5\3*\n\3\3\3\3\3\3\3\3\3\3\3\3\4\3\4\3\4\3\4\3\5\3\5\3"+
+		"\5\3\5\3\6\3\6\3\6\3\6\3\7\3\7\3\7\3\7\3\7\7\7B\n\7\f\7\16\7E\13\7\3\b"+
+		"\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\6\bR\n\b\r\b\16\bS\3\b\3\b\3"+
+		"\t\3\t\3\t\3\t\3\t\3\t\3\t\6\t_\n\t\r\t\16\t`\3\t\3\t\3\n\3\n\3\n\7\n"+
+		"h\n\n\f\n\16\nk\13\n\3\n\3\n\3\n\5\np\n\n\3\13\3\13\3\13\3\13\3\13\3\13"+
+		"\3\13\5\13y\n\13\3\f\3\f\3\f\2\2\r\2\4\6\b\n\f\16\20\22\24\26\2\3\3\2"+
+		"\32\33\2\177\2\30\3\2\2\2\4\37\3\2\2\2\6\60\3\2\2\2\b\64\3\2\2\2\n8\3"+
+		"\2\2\2\f<\3\2\2\2\16F\3\2\2\2\20W\3\2\2\2\22o\3\2\2\2\24x\3\2\2\2\26z"+
+		"\3\2\2\2\30\31\5\4\3\2\31\33\5\16\b\2\32\34\5\20\t\2\33\32\3\2\2\2\34"+
+		"\35\3\2\2\2\35\33\3\2\2\2\35\36\3\2\2\2\36\3\3\2\2\2\37 \7\3\2\2 !\7\4"+
+		"\2\2!#\5\6\4\2\"$\5\b\5\2#\"\3\2\2\2#$\3\2\2\2$&\3\2\2\2%\'\5\n\6\2&%"+
+		"\3\2\2\2&\'\3\2\2\2\')\3\2\2\2(*\5\f\7\2)(\3\2\2\2)*\3\2\2\2*+\3\2\2\2"+
+		"+,\7\5\2\2,-\7\6\2\2-.\7\34\2\2./\7\7\2\2/\5\3\2\2\2\60\61\7\b\2\2\61"+
+		"\62\7\6\2\2\62\63\7\36\2\2\63\7\3\2\2\2\64\65\7\t\2\2\65\66\7\6\2\2\66"+
+		"\67\7\36\2\2\67\t\3\2\2\289\7\n\2\29:\7\6\2\2:;\7\36\2\2;\13\3\2\2\2<"+
+		"=\7\13\2\2=>\7\6\2\2>C\7\36\2\2?@\7\f\2\2@B\7\36\2\2A?\3\2\2\2BE\3\2\2"+
+		"\2CA\3\2\2\2CD\3\2\2\2D\r\3\2\2\2EC\3\2\2\2FG\7\r\2\2GQ\7\4\2\2HI\7\35"+
+		"\2\2IJ\7\16\2\2JK\5\24\13\2KL\7\f\2\2LM\5\24\13\2MN\7\f\2\2NO\5\26\f\2"+
+		"OP\7\17\2\2PR\3\2\2\2QH\3\2\2\2RS\3\2\2\2SQ\3\2\2\2ST\3\2\2\2TU\3\2\2"+
+		"\2UV\7\7\2\2V\17\3\2\2\2WX\7\20\2\2XY\7\35\2\2Y^\7\4\2\2Z[\5\22\n\2[\\"+
+		"\7\6\2\2\\]\7\35\2\2]_\3\2\2\2^Z\3\2\2\2_`\3\2\2\2`^\3\2\2\2`a\3\2\2\2"+
+		"ab\3\2\2\2bc\7\7\2\2c\21\3\2\2\2di\7\36\2\2ef\7\f\2\2fh\7\36\2\2ge\3\2"+
+		"\2\2hk\3\2\2\2ig\3\2\2\2ij\3\2\2\2jp\3\2\2\2ki\3\2\2\2lm\7\21\2\2mn\7"+
+		"\34\2\2np\7\22\2\2od\3\2\2\2ol\3\2\2\2p\23\3\2\2\2qy\7\23\2\2ry\7\24\2"+
+		"\2sy\7\25\2\2ty\7\26\2\2uv\7\27\2\2vy\7\30\2\2wy\7\31\2\2xq\3\2\2\2xr"+
+		"\3\2\2\2xs\3\2\2\2xt\3\2\2\2xu\3\2\2\2xw\3\2\2\2y\25\3\2\2\2z{\t\2\2\2"+
+		"{\27\3\2\2\2\f\35#&)CS`iox";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

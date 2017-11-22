@@ -1,4 +1,5 @@
 // Generated from t3/src/Tira_teima.g4 by ANTLR 4.7
+package t3;
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -58,6 +59,18 @@ public class Tira_teimaBaseListener implements Tira_teimaListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitTreinador_time(Tira_teimaParser.Treinador_timeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterGoleiro(Tira_teimaParser.GoleiroContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitGoleiro(Tira_teimaParser.GoleiroContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

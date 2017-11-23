@@ -12,21 +12,31 @@ import java.io.PrintWriter;
 public class Main {
 
     public static void main(String args[]) throws IOException, RecognitionException {
-        Saida out = new Saida();
+        t3.Saida out = new t3.Saida();
         ANTLRInputStream input = new ANTLRInputStream(new FileInputStream(args[0]));
-        Tira_teimaLexer lexer = new Tira_teimaLexer(input);
+        t3.Tira_teimaLexer lexer = new t3.Tira_teimaLexer(input);
 
         CommonTokenStream tokens = new CommonTokenStream(lexer);
-        Tira_teimaParser parser = new Tira_teimaParser(tokens);
+        t3.Tira_teimaParser parser = new t3.Tira_teimaParser(tokens);
         //remove todos os listeners de erro
         parser.removeErrorListeners();
         // adiciona o ErroListener Customizado
-        parser.addErrorListener(new T3ErrorListener(out));
+        parser.addErrorListener(new t3.T3ErrorListener(out));
         //executa análise sintática
+        Tira_teimaParser.ProgramaContext arvore = parser.programa();
 
         if (!out.isModificado()) {//se foi bem sucedida
             //cria objeta analisador semantico
 
+            GeradorDeCodigo gc = new GeradorDeCodigo();
+            ParseTreeWalker.DEFAULT.walk(gc, arvore);
+            try{
+                PrintWriter writer = new PrintWriter(args[1], "UTF-8");
+                writer.print(gc.toString());
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else {
             out.println("Fim da compilacao");
             System.out.print(out);

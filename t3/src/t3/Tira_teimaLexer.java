@@ -1,4 +1,4 @@
-// Generated from t3/src/Tira_teima.g4 by ANTLR 4.7
+// Generated from t3/src/t3/Tira_teima.g4 by ANTLR 4.7
 package t3;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;

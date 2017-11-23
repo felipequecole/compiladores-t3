@@ -12,6 +12,8 @@ import java.io.PrintWriter;
 public class Main {
 
     public static void main(String args[]) throws IOException, RecognitionException {
+
+
         t3.Saida out = new t3.Saida();
         ANTLRInputStream input = new ANTLRInputStream(new FileInputStream(args[0]));
         t3.Tira_teimaLexer lexer = new t3.Tira_teimaLexer(input);
@@ -34,6 +36,8 @@ public class Main {
                 PrintWriter writer = new PrintWriter(args[1], "UTF-8");
                 writer.print(gc.toString());
                 writer.close();
+                Runtime run = Runtime.getRuntime();
+                run.exec("python3 saida.py");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -42,6 +46,7 @@ public class Main {
             System.out.print(out);
             try{
               PrintWriter writer = new PrintWriter(args[1], "UTF-8");
+              //System()
               writer.print(out);
               writer.close();
             } catch (IOException e) {

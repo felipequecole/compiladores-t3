@@ -68,6 +68,16 @@ public interface Tira_teimaListener extends ParseTreeListener {
 	 */
 	void exitConjunto_jogadores(Tira_teimaParser.Conjunto_jogadoresContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link Tira_teimaParser#pos_tatica}.
+	 * @param ctx the parse tree
+	 */
+	void enterPos_tatica(Tira_teimaParser.Pos_taticaContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Tira_teimaParser#pos_tatica}.
+	 * @param ctx the parse tree
+	 */
+	void exitPos_tatica(Tira_teimaParser.Pos_taticaContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link Tira_teimaParser#taticas}.
 	 * @param ctx the parse tree
 	 */

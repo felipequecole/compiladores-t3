@@ -88,6 +88,18 @@ public class Tira_teimaBaseListener implements Tira_teimaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterPos_tatica(Tira_teimaParser.Pos_taticaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitPos_tatica(Tira_teimaParser.Pos_taticaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterTaticas(Tira_teimaParser.TaticasContext ctx) { }
 	/**
 	 * {@inheritDoc}

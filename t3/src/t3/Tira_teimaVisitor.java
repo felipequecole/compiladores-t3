@@ -47,6 +47,12 @@ public interface Tira_teimaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitConjunto_jogadores(Tira_teimaParser.Conjunto_jogadoresContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link Tira_teimaParser#pos_tatica}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPos_tatica(Tira_teimaParser.Pos_taticaContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link Tira_teimaParser#taticas}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

@@ -19,12 +19,14 @@ goleiro: 'Goleiro' ':' CADEIA ;
 
 conjunto_jogadores: 'Jogadores_de_linha'':' CADEIA (',' CADEIA)*;
 
+pos_tatica: IDENT '(' posicionamento','posicionamento','espacamento')';
+
 taticas: 'Taticas''{'
-		(IDENT'('posicionamento','posicionamento','espacamento')')+
+		list_taticas += pos_tatica+
 '}';
 
 esquemas: 'Esquema' IDENT '{'
- 					(conteudo_esquema':' IDENT )+
+ 					(conteudo_esquema':' nome_tat += IDENT )+
 					 '}';
 
 

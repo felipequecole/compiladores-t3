@@ -16,6 +16,6 @@ defesa_aprovado(flanco_esquerdo, flanco_direito, agrupados)
 
 Esquema x{
 "2","5","6","8" : defesa_pressao
-"1","9","3":defesa_carille
+"1","9","3":defesa
 "4","7","10":defesa_aprovado
 }

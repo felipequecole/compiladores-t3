@@ -29,6 +29,13 @@ public class Main {
 
         if (!out.isModificado()) {//se foi bem sucedida
             //cria objeta analisador semantico
+            AnalisadorSemantico as=new AnalisadorSemantico();
+            Time time = new Time();
+            as.setTime(time);
+            //executa a análise sintatica
+            as.visitPrograma(arvore);
+
+            if(!out.isModificado()){
 
             GeradorDeCodigo gc = new GeradorDeCodigo();
             ParseTreeWalker.DEFAULT.walk(gc, arvore);
@@ -38,20 +45,23 @@ public class Main {
                 writer.close();
                 Runtime run = Runtime.getRuntime();
                 run.exec("python3 saida.py");
+                return ;
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        } else {
+          }
+        }
+
             out.println("Fim da compilacao");
-            System.out.print(out);
+            System.out.print(Saida.getTexto());
             try{
               PrintWriter writer = new PrintWriter(args[1], "UTF-8");
               //System()
-              writer.print(out);
+              writer.print(Saida.getTexto());
               writer.close();
             } catch (IOException e) {
               e.printStackTrace();
-        }
+      
            // do somehing
         }
     }

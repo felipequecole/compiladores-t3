@@ -9,8 +9,11 @@ import java.util.HashMap;
  * Created by felipequecole on 22/11/17.
  */
 public class GeradorDeCodigo extends Tira_teimaBaseListener {
+    // todo PRECISA ZERAR PRA QUANDO TEM + DE 1 TIME
     private String saida;
     private int qtd_linhas;
+    private int plots;
+    private ArrayList<Integer> changeTeam;
     private ArrayList<String> linhas;
     private ArrayList<String> taticas_linha;
     private HashMap<String, Tatica> taticas;
@@ -18,6 +21,9 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
     public GeradorDeCodigo(){
         saida = "";
         qtd_linhas = 0;
+        plots = 0;
+        changeTeam = new ArrayList<>();
+        changeTeam.add(0);
         linhas = new ArrayList<>();
         taticas = new HashMap<>();
         taticas_linha = new ArrayList<>();
@@ -43,16 +49,17 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
     public void enterPrograma(Tira_teimaParser.ProgramaContext ctx) {
         println("import matplotlib.pyplot as plt");
         println("field = plt.imread(\'campo.jpg\')");
+        println("bola = plt.imread(\'bola.png\')");
         println("plot = plt.imshow(field)");
     }
 
 
     @Override
     public void exitPrograma(Tira_teimaParser.ProgramaContext ctx) {
-        println("plt.axis(\'off\')");
-        println("plot.axes.get_xaxis().set_visible(False)");
-        println("plot.axes.get_yaxis().set_visible(False)");
-        println("plt.savefig('saida_sera.png', bbox_inches='tight', pad_inches=-0.11)");
+//        println("plt.axis(\'off\')");
+//        println("plot.axes.get_xaxis().set_visible(False)");
+//        println("plot.axes.get_yaxis().set_visible(False)");
+//        println("plt.savefig('saida_sera.png', bbox_inches='tight', pad_inches=-0.11)");
     }
 
 
@@ -65,6 +72,7 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
 
     @Override
     public void enterEsquemas(Tira_teimaParser.EsquemasContext ctx) {
+
         for (Token linha: ctx.nome_tat){
             taticas_linha.add(linha.getText());
         }
@@ -74,7 +82,13 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
     public void exitEsquemas(Tira_teimaParser.EsquemasContext ctx) {
         double espaco_y = 380.0/this.qtd_linhas;
         double y = 400;
+        int cont = 0;
         for (String linha : this.linhas){
+            if (cont < changeTeam.get(plots)) {
+                cont++;
+                continue;
+            }
+            cont++;
             System.out.println(linha);
             String[] jogadores = linha.split(",");
             int numero_jogadores = jogadores.length;
@@ -101,21 +115,30 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
 
         // setas de ataque
         y = 400;
-        int tat = 0;
+        int tat = changeTeam.get(plots);
+        cont = 0;
         for (String linha : this.linhas){
+            System.out.println("entrou " + String.valueOf(cont));
+            if (cont < changeTeam.get(plots)) {
+                System.out.println("pulou " + String.valueOf(cont));
+                cont++;
+                continue;
+            }
+            cont++;
             System.out.println(linha);
             String[] jogadores = linha.split(",");
             int numero_jogadores = jogadores.length;
             double espaco_x = 200.0/numero_jogadores;
             double x = 25 + espaco_x;
             Tatica tatica = taticas.get(taticas_linha.get(tat));
+            System.out.println(tatica.nome);
             for (int i = 0; i < numero_jogadores; i++){
                 print("plt.arrow(");
                 print(String.valueOf(x));
                 print(",");
                 print(String.valueOf(y));
                 print(",");
-                x += espaco_x;
+                //x += espaco_x;
                 switch (tatica.ofensivo){
                     case "pressao":
                         println("0, -30, color=\'r\', head_width = 10)");
@@ -126,23 +149,40 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
                     case "flanco_esquerdo":
                         println("-20, -30, color=\'r\', head_width = 10)");
                         break;
+                    case "bola":
+                        println("0, -30, color=\'r\', head_width = 10)");
+                        println("plt.imshow(bola, zorder=1, extent=("+ String.valueOf(x - 5) + "," +
+                                String.valueOf(x+5)+ "," + String.valueOf(y - 50) + "," +
+                                String.valueOf(y-40)+"))");
+                        break;
                 }
+                x += espaco_x;
             }
             y = y - espaco_y;
             tat++;
+            changeTeam.add(this.qtd_linhas);
         }
 
 
         // setas de defesa
         y = 400;
-        tat = 0;
+        tat = changeTeam.get(plots);
+        System.out.println(tat);
+        System.out.println(taticas_linha.get(tat));
+        cont = 0;
         for (String linha : this.linhas){
+            if (cont < changeTeam.get(plots)) {
+                cont++;
+                continue;
+            }
+            cont++;
             System.out.println(linha);
             String[] jogadores = linha.split(",");
             int numero_jogadores = jogadores.length;
             double espaco_x = 200.0/numero_jogadores;
             double x = 25 + espaco_x;
             Tatica tatica = taticas.get(taticas_linha.get(tat));
+            System.out.println(tatica.nome);
             for (int i = 0; i < numero_jogadores; i++){
                 print("plt.arrow(");
                 print(String.valueOf(x+3));
@@ -165,6 +205,14 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
             y = y - espaco_y;
             tat++;
         }
+        println("plot = plt.imshow(field, zorder=0)");
+        println("plt.axis(\'off\')");
+        println("plot.axes.get_xaxis().set_visible(False)");
+        println("plot.axes.get_yaxis().set_visible(False)");
+        println("plt.savefig('saida_" + String.valueOf(plots) + ".png', bbox_inches='tight', pad_inches=-0.11)");
+        println("plt.clf()");
+        this.qtd_linhas = 0;
+        plots++;
     }
 
     @Override
@@ -177,6 +225,6 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
 
     @Override
     public void exitTaticas(Tira_teimaParser.TaticasContext ctx) {
-        System.out.println(taticas);
+//        System.out.println(taticas);
     }
 }

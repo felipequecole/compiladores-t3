@@ -9,8 +9,8 @@ compactacao: 12
 
 
 Taticas{
-defesa_pressao(pressao, pressao, esparsos)
-defesa_carille(flanco_direito, flanco_direito, agrupados)
+defesa_pressao(bola, pressao, esparsos)
+defesa_carille(pressao, flanco_direito, agrupados)
 defesa_aprovado(flanco_esquerdo, flanco_esquerdo, agrupados)
 }
 

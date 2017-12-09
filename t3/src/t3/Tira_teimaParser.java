@@ -399,6 +399,8 @@ public class Tira_teimaParser extends Parser {
 	}
 
 	public static class Conjunto_jogadoresContext extends ParserRuleContext {
+		public Token CADEIA;
+		public List<Token> l_jog = new ArrayList<Token>();
 		public List<TerminalNode> CADEIA() { return getTokens(Tira_teimaParser.CADEIA); }
 		public TerminalNode CADEIA(int i) {
 			return getToken(Tira_teimaParser.CADEIA, i);
@@ -434,7 +436,8 @@ public class Tira_teimaParser extends Parser {
 			setState(61);
 			match(T__3);
 			setState(62);
-			match(CADEIA);
+			((Conjunto_jogadoresContext)_localctx).CADEIA = match(CADEIA);
+			((Conjunto_jogadoresContext)_localctx).l_jog.add(((Conjunto_jogadoresContext)_localctx).CADEIA);
 			setState(67);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
@@ -444,7 +447,8 @@ public class Tira_teimaParser extends Parser {
 				setState(63);
 				match(T__9);
 				setState(64);
-				match(CADEIA);
+				((Conjunto_jogadoresContext)_localctx).CADEIA = match(CADEIA);
+				((Conjunto_jogadoresContext)_localctx).l_jog.add(((Conjunto_jogadoresContext)_localctx).CADEIA);
 				}
 				}
 				setState(69);
@@ -599,6 +603,8 @@ public class Tira_teimaParser extends Parser {
 	}
 
 	public static class EsquemasContext extends ParserRuleContext {
+		public Conteudo_esquemaContext conteudo_esquema;
+		public List<Conteudo_esquemaContext> lista_jog_tat = new ArrayList<Conteudo_esquemaContext>();
 		public Token IDENT;
 		public List<Token> nome_tat = new ArrayList<Token>();
 		public List<TerminalNode> IDENT() { return getTokens(Tira_teimaParser.IDENT); }
@@ -650,7 +656,8 @@ public class Tira_teimaParser extends Parser {
 				{
 				{
 				setState(91);
-				conteudo_esquema();
+				((EsquemasContext)_localctx).conteudo_esquema = conteudo_esquema();
+				((EsquemasContext)_localctx).lista_jog_tat.add(((EsquemasContext)_localctx).conteudo_esquema);
 				setState(92);
 				match(T__3);
 				setState(93);
@@ -678,6 +685,8 @@ public class Tira_teimaParser extends Parser {
 	}
 
 	public static class Conteudo_esquemaContext extends ParserRuleContext {
+		public Token CADEIA;
+		public List<Token> l_jog_esq = new ArrayList<Token>();
 		public List<TerminalNode> CADEIA() { return getTokens(Tira_teimaParser.CADEIA); }
 		public TerminalNode CADEIA(int i) {
 			return getToken(Tira_teimaParser.CADEIA, i);
@@ -714,7 +723,8 @@ public class Tira_teimaParser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(101);
-				match(CADEIA);
+				((Conteudo_esquemaContext)_localctx).CADEIA = match(CADEIA);
+				((Conteudo_esquemaContext)_localctx).l_jog_esq.add(((Conteudo_esquemaContext)_localctx).CADEIA);
 				setState(106);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
@@ -724,7 +734,8 @@ public class Tira_teimaParser extends Parser {
 					setState(102);
 					match(T__9);
 					setState(103);
-					match(CADEIA);
+					((Conteudo_esquemaContext)_localctx).CADEIA = match(CADEIA);
+					((Conteudo_esquemaContext)_localctx).l_jog_esq.add(((Conteudo_esquemaContext)_localctx).CADEIA);
 					}
 					}
 					setState(108);

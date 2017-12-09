@@ -17,7 +17,7 @@ treinador_time: 'Treinador'':' CADEIA ;
 
 goleiro: 'Goleiro' ':' CADEIA ;
 
-conjunto_jogadores: 'Jogadores_de_linha'':' CADEIA (',' CADEIA)*;
+conjunto_jogadores: 'Jogadores_de_linha'':' l_jog += CADEIA (',' l_jog += CADEIA)*;
 
 pos_tatica: IDENT '(' posicionamento','posicionamento','espacamento')';
 
@@ -26,11 +26,11 @@ taticas: 'Taticas''{'
 '}';
 
 esquemas: 'Esquema' IDENT '{'
- 					(conteudo_esquema':' nome_tat += IDENT )+
+ 					(lista_jog_tat +=conteudo_esquema':' nome_tat += IDENT )+
 					 '}';
 
 
-conteudo_esquema: CADEIA (',' CADEIA)* | '['INT']';
+conteudo_esquema: l_jog_esq += CADEIA (',' l_jog_esq += CADEIA)* | '['INT']';
 
 posicionamento: 'pressao'|'bola'|'flanco_direito'|'flanco_esquerdo'|'protege_gol'
 								'faixa_central'|'NULO';

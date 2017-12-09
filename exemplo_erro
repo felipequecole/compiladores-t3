@@ -3,7 +3,7 @@ Time{
 Nome: "perebas"
 Treinador: "pofexo"
 Goleiro: "jamelao"
-Jogadores_de_linha: "1","2","3","4","5","6","7","8","9","10"
+Jogadores_de_linha: "15","2","3","4","5","4","6","7","8","9","10"
 compactacao: 12
 }
 
@@ -15,7 +15,13 @@ defesa_aprovado(flanco_esquerdo, flanco_direito, agrupados)
 }
 
 Esquema x{
+"2","5","6","d8","8" : defsa_pressao
+"1","9","3":defesa_aprovado
+"4":defesa_aprovado
+}
+
+Esquema y{
 "2","5","6","8" : defesa_pressao
-"1","9","3":defesa
-"4","7","10":defesa_aprovado
+"1","9","s3":defesa_carille
+"4","7","2":defesa_aprovado
 }

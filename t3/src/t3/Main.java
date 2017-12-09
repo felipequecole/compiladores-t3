@@ -52,8 +52,8 @@ public class Main {
           }
         }
 
-            out.println("Fim da compilacao");
-            System.out.print(Saida.getTexto());
+            out.println("Fim da compilacao\n");
+            System.out.print("\nErros:\n"+Saida.getTexto());
             try{
               PrintWriter writer = new PrintWriter(args[1], "UTF-8");
               //System()
@@ -61,7 +61,7 @@ public class Main {
               writer.close();
             } catch (IOException e) {
               e.printStackTrace();
-      
+
            // do somehing
         }
     }

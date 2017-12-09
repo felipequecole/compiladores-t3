@@ -52,7 +52,7 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
     public void enterPrograma(Tira_teimaParser.ProgramaContext ctx) {
         println("import matplotlib.pyplot as plt");
         println("field = plt.imread(\'campo.jpg\')");
-      //  println("bola = plt.imread(\'bola.png\')");
+        println("bola = plt.imread(\'bola.png\')");
         println("plot = plt.imshow(field)");
     }
 

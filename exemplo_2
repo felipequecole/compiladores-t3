@@ -1,0 +1,34 @@
+
+Time{
+Nome: "Palmeiras"
+Treinador: "Roger Machado"
+Goleiro: "Prass"
+Jogadores_de_linha: "Ze R.","Mina","Edu D.","Jean","B. Henrique","Tche Tche","Moises","Dudu","Keno","Borja"
+compactacao: 99
+}
+
+
+Taticas{
+defesa_pressao(bola, pressao, esparsos)
+defesa_carille(pressao, flanco_direito, agrupados)
+defesa_aprovado(flanco_esquerdo, flanco_esquerdo, agrupados)
+}
+
+Esquema x{
+"Ze R.","Mina","Edu D.","Jean" : defesa_pressao
+"Tche Tche","B. Henrique","Moises":defesa_pressao
+"Dudu","Borja","Keno":defesa_pressao
+}
+
+
+Esquema y{
+"Ze R.","Mina","Edu D.","Jean":defesa_carille
+"B. Henrique","Tche Tche","Moises":defesa_pressao
+"Dudu","Borja","Keno":defesa_aprovado
+}
+
+
+Esquema z{
+"Ze R.","Mina","Edu D.","Jean","B. Henrique","Tche Tche","Moises","Dudu","Keno","Borja": defesa_pressao
+}
+

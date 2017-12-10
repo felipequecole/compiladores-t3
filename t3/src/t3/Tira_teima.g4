@@ -31,8 +31,7 @@ esquemas: 'Esquema' IDENT '{'
 
 conteudo_esquema: l_jog_esq += CADEIA (',' l_jog_esq += CADEIA)* | '['INT']';
 
-posicionamento: 'pressao'|'bola'|'flanco_direito'|'flanco_esquerdo'|'protege_gol'
-								'faixa_central'|'NULO';
+posicionamento: 'pressao'|'bola'|'flanco_direito'|'flanco_esquerdo'|'NULO';
 
 espacamento: 'agrupados'| 'esparsos';
 

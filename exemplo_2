@@ -20,10 +20,11 @@ Esquema Tatica1{
 }
 
 
-Esquema Barril{
-"Ze R.","Mina","Edu D.","Jean":defesa_carille
-"B. Henrique","Tche Tche","Moises":defesa_pressao
-"Dudu","Borja","Keno":defesa_aprovado
+Esquema Defensivo{
+"Ze R.","Mina","Edu D.","Jean":defesa_pressao
+"B. Henrique","Tche Tche","Moises":defesa_carille
+"Dudu","Borja": defesa_pressao
+"Keno":defesa_aprovado
 }
 
 

@@ -48,6 +48,12 @@ public class AnalisadorSemantico extends Tira_teimaBaseVisitor<Object>{
 
 
   public Object visitEsquemas(Tira_teimaParser.EsquemasContext ctx){
+    if(!tabela.existeSimbolo(ctx.IDENT(0).getText())){
+      tabela.adicionarSimbolo(ctx.IDENT(0).getText(),"Esquema");
+    }else{
+      Saida.println("Esquema: " + ctx.IDENT(0).getText());
+      Saida.println("   Idendificador "+ctx.IDENT(0).getText()+" Já declarado anteriormente");
+    }
     int num_jogadores = 0;
     TabelaDeSimbolos tabelaJog = new TabelaDeSimbolos("Esquema");
     for(Tira_teimaParser.Conteudo_esquemaContext aux : ctx.lista_jog_tat){

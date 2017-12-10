@@ -23,6 +23,8 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
     private float compactacaoLinha = 400;
     private float compactacaoLinhaEsparso = 600;
     private float compactacaoLinhaAgrupado = 400;
+    private String nomeTecnico;
+    private String nomeTime;
 
     private float compactacao = 800;
     public GeradorDeCodigo(){
@@ -280,11 +282,13 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
             cont++;
             tat++;
         }
+        print("plt.text(375, 0, \'" + this.nomeTime + "\', verticalalignment=\'top\',");
+        println("horizontalalignment=\'center\', color=\'black\', fontsize=12)");
         println("plot = plt.imshow(field, zorder=0)");
         println("plt.axis(\'off\')");
         println("plot.axes.get_xaxis().set_visible(False)");
         println("plot.axes.get_yaxis().set_visible(False)");
-        println("plt.savefig('saida_" + String.valueOf(plots) + ".png', bbox_inches='tight', pad_inches=-0.11)");
+        println("plt.savefig('saida_" + String.valueOf(plots) + ".png', bbox_inches='tight', pad_inches=0.1)");
         println("plt.clf()");
         plots++;
     }
@@ -297,4 +301,13 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
         }
     }
 
+    @Override
+    public void enterNome_time(Tira_teimaParser.Nome_timeContext ctx) {
+        this.nomeTime = ctx.CADEIA().getText().replace("\"", "");
+    }
+
+    @Override
+    public void enterTreinador_time(Tira_teimaParser.Treinador_timeContext ctx) {
+        this.nomeTecnico = ctx.CADEIA().getText().replace("\"", "");
+    }
 }

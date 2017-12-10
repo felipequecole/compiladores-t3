@@ -284,11 +284,13 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
         }
         print("plt.text(375, 0, \'" + this.nomeTime + "\', verticalalignment=\'top\',");
         println("horizontalalignment=\'center\', color=\'black\', fontsize=12)");
+        print("plt.text(525, 975, \'Tec.: " + this.nomeTecnico + "\', verticalalignment=\'top\',");
+        println("horizontalalignment=\'center\', color=\'black\', fontsize=11)");
         println("plot = plt.imshow(field, zorder=0)");
         println("plt.axis(\'off\')");
         println("plot.axes.get_xaxis().set_visible(False)");
         println("plot.axes.get_yaxis().set_visible(False)");
-        println("plt.savefig('saida_" + String.valueOf(plots) + ".png', bbox_inches='tight', pad_inches=0.1)");
+        println("plt.savefig('saida_" + String.valueOf(plots) + ".png', bbox_inches='tight', pad_inches=0)");
         println("plt.clf()");
         plots++;
     }

@@ -282,6 +282,8 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
             cont++;
             tat++;
         }
+        print("plt.text(10, 975, \'" + ctx.IDENT(0).getText() + "\', verticalalignment=\'top\',");
+        println("horizontalalignment=\'left\', color=\'black\', fontsize=11)");
         print("plt.text(375, 0, \'" + this.nomeTime + "\', verticalalignment=\'top\',");
         println("horizontalalignment=\'center\', color=\'black\', fontsize=12)");
         print("plt.text(525, 975, \'Tec.: " + this.nomeTecnico + "\', verticalalignment=\'top\',");

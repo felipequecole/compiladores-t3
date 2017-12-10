@@ -179,6 +179,8 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
                                 String.valueOf(x+10)+ "," + String.valueOf(y - 55) + "," +
                                 String.valueOf(y-35)+"))");
                         break;
+                    default:
+                        println("0,0)");
                 }
                 x += espaco_x;
             }
@@ -233,6 +235,15 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
                         break;
                     case "flanco_esquerdo":
                         println("-20, 30, color=\'b\', head_width = 15)");
+                        break;
+                    case "bola":
+                        println("0, -30, color=\'r\', head_width = 15)");
+                        println("plt.imshow(bola, zorder=2, extent=("+ String.valueOf(x - 10) + "," +
+                                String.valueOf(x+10)+ "," + String.valueOf(y - 55) + "," +
+                                String.valueOf(y-35)+"))");
+                        break;
+                    default:
+                        println("0,0);");
                         break;
                 }
             }

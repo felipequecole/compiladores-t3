@@ -1,11 +1,10 @@
 
 Time{
 Nome: "perebas"
-Treinador: "pofexo"
-Goleiro: "jamelao"
+Treinador: "pofexo
+Goleiro: "jameldfao"
 Jogadores_de_linha: "1","2","3","4","5","6","7","8","9","10"
-compactacao: 12
-}
+}:
 
 
 Taticas{
@@ -25,4 +24,10 @@ Esquema y{
 "2","5","6","8":defesa_carille
 "1","9","3":defesa_pressao
 "4","7","10":defesa_aprovado
+}
+
+Esquema z{
+"2","5","6": defesa_pressao
+"1","9","3":defesa_pressao
+"4","7","10","8":defesa_pressao
 }

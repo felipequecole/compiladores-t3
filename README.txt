@@ -1,3 +1,8 @@
+Grupo:
+Eduardo Yamauchi - 619485
+Felipe Quécole - 619515
+Frankson Teotonho -  619540
+Italo Vieira - 619604
 
 É necessário instalar o matplotlib
 No linux:

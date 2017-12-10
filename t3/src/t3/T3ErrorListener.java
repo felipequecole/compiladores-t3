@@ -19,7 +19,13 @@ public class T3ErrorListener implements ANTLRErrorListener {
 
     @Override
     public void syntaxError(Recognizer<?, ?> rcgnzr, Object o, int i, int i1, String string, RecognitionException re) {
-      Saida.println(string);
+      String str = string.replace("mismatched input","Entrada inesperada");
+      str = string.replace("extraneous input","Entrada inesperada");
+      str = str.replace(" expecting",". Esperada");
+      str = str.replace("missing","Faltando");
+      str = str.replace("at","em");
+
+      Saida.println(str);
 
     }
 

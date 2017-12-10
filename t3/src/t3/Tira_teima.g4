@@ -8,8 +8,7 @@ programa: time taticas esquemas+;
 time: 'Time''{' nome_time
 								treinador_time?
 								goleiro?
-								conjunto_jogadores?
-								'compactacao'':' INT '}';
+								conjunto_jogadores '}';
 
 nome_time: 'Nome'':' CADEIA;
 

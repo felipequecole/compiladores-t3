@@ -11,3 +11,9 @@ defesa_pressao(bola, pressao, esparsos)
 defesa_carille(flanco_esquerdo, flanco_direito, agrupados)
 defesa_aprovado(flanco_esquerdo, jooj, agrupados)
 }
+
+Esquema x{
+"Ze R.","Mina","Edu D.","Jean" : defesa_pressao
+"Tche Tche","B. Henrique","Moises":defesa_pressao
+"Dudu","Borja","Keno":defesa_pressao
+}

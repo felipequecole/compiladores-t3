@@ -15,12 +15,16 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
     private int plots;
     private ArrayList<Integer> changeTeam;
     private ArrayList<String> linhas;
+    private TabelaDeSimbolos tabela;
     private ArrayList<String> taticas_linha;
     private HashMap<String, Tatica> taticas;
     private float comprimentoCampo = 1006;
     private float larguraCampo = 736;
-    private float compactacaoLinha = 600;
-    private float compactacao = 700;
+    private float compactacaoLinha = 400;
+    private float compactacaoLinhaEsparso = 600;
+    private float compactacaoLinhaAgrupado = 400;
+
+    private float compactacao = 800;
     public GeradorDeCodigo(){
         saida = "";
         qtd_linhas = 0;
@@ -28,6 +32,7 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
         changeTeam = new ArrayList<>();
         changeTeam.add(0);
         linhas = new ArrayList<>();
+        tabela = new TabelaDeSimbolos("geração");
         taticas = new HashMap<>();
         taticas_linha = new ArrayList<>();
     }
@@ -91,12 +96,20 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
                 cont++;
                 continue;
             }
+            Tatica tatica = taticas.get(taticas_linha.get(cont));
             cont++;
             System.out.println(linha);
             String[] jogadores = linha.split(",");
             int numero_jogadores = jogadores.length;
-            double espaco_x = compactacaoLinha/numero_jogadores;
-            double x = (larguraCampo - compactacaoLinha)/2 + espaco_x/2;
+            System.out.println(tatica.espacamento);
+            double x,espaco_x;
+            if(tatica.espacamento.equals("agrupados")){
+              espaco_x = compactacaoLinhaAgrupado/numero_jogadores;
+              x = (larguraCampo - compactacaoLinhaAgrupado)/2 + espaco_x/2;
+            }else{
+              espaco_x = compactacaoLinhaEsparso/numero_jogadores;
+              x = (larguraCampo - compactacaoLinhaEsparso)/2 + espaco_x/2;
+            }
             print("plt.scatter([");
             for (int i = 0; i < numero_jogadores; i++){
                 print(String.valueOf(x));
@@ -131,9 +144,17 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
             System.out.println(linha);
             String[] jogadores = linha.split(",");
             int numero_jogadores = jogadores.length;
-            double espaco_x = compactacaoLinha/numero_jogadores;
-            double x = (larguraCampo - compactacaoLinha)/2 + espaco_x/2;
             Tatica tatica = taticas.get(taticas_linha.get(tat));
+
+            double x,espaco_x;
+            if(tatica.espacamento.equals("agrupados")){
+              espaco_x = compactacaoLinhaAgrupado/numero_jogadores;
+              x = (larguraCampo - compactacaoLinhaAgrupado)/2 + espaco_x/2;
+            }else{
+              espaco_x = compactacaoLinhaEsparso/numero_jogadores;
+              x = (larguraCampo - compactacaoLinhaEsparso)/2 + espaco_x/2;
+            }
+
             System.out.println(tatica.nome);
             for (int i = 0; i < numero_jogadores; i++){
                 print("plt.arrow(");
@@ -144,17 +165,17 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
                 //x += espaco_x;
                 switch (tatica.ofensivo){
                     case "pressao":
-                        println("0, -30, color=\'r\', head_width = 10)");
+                        println("0, -30, color=\'r\', head_width = 15)");
                         break;
                     case "flanco_direito":
-                        println("20, -30, color=\'r\', head_width = 10)");
+                        println("20, -30, color=\'r\', head_width = 15)");
                         break;
                     case "flanco_esquerdo":
-                        println("-20, -30, color=\'r\', head_width = 10)");
+                        println("-20, -30, color=\'r\', head_width = 15)");
                         break;
                     case "bola":
-                        println("0, -30, color=\'r\', head_width = 10)");
-                        println("plt.imshow(bola, zorder=1, extent=("+ String.valueOf(x - 5) + "," +
+                        println("0, -30, color=\'r\', head_width = 15)");
+                        println("plt.imshow(bola, zorder=2, extent=("+ String.valueOf(x - 5) + "," +
                                 String.valueOf(x+5)+ "," + String.valueOf(y - 50) + "," +
                                 String.valueOf(y-40)+"))");
                         break;
@@ -182,9 +203,17 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
             System.out.println(linha);
             String[] jogadores = linha.split(",");
             int numero_jogadores = jogadores.length;
-            double espaco_x = compactacaoLinha/numero_jogadores;
-            double x = (larguraCampo - compactacaoLinha)/2 + espaco_x/2;
             Tatica tatica = taticas.get(taticas_linha.get(tat));
+
+            double x,espaco_x;
+            if(tatica.espacamento.equals("agrupados")){
+              espaco_x = compactacaoLinhaAgrupado/numero_jogadores;
+              x = (larguraCampo - compactacaoLinhaAgrupado)/2 + espaco_x/2;
+            }else{
+              espaco_x = compactacaoLinhaEsparso/numero_jogadores;
+              x = (larguraCampo - compactacaoLinhaEsparso)/2 + espaco_x/2;
+            }
+
             System.out.println(tatica.nome);
             for (int i = 0; i < numero_jogadores; i++){
                 print("plt.arrow(");
@@ -195,19 +224,65 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
                 x += espaco_x;
                 switch (tatica.defensivo){
                     case "pressao":
-                        println("0, -30, color=\'b\', head_width = 10)");
+                        println("0, -30, color=\'b\', head_width = 15)");
                         break;
                     case "flanco_direito":
-                        println("20, 30, color=\'b\', head_width = 10)");
+                        println("20, 30, color=\'b\', head_width = 15)");
                         break;
                     case "flanco_esquerdo":
-                        println("-20, 30, color=\'b\', head_width = 10)");
+                        println("-20, 30, color=\'b\', head_width = 15)");
                         break;
                 }
             }
             y = y - espaco_y;
             tat++;
         }
+        //nomes
+
+        y =  comprimentoCampo -(comprimentoCampo - compactacao)/2 - espaco_y/2;
+        tat = changeTeam.get(plots);
+        System.out.println(tat);
+        System.out.println(taticas_linha.get(tat));
+        cont = 0;
+        int counter = 0;
+        for (String linha : this.linhas){
+            if (cont < changeTeam.get(plots)) {
+                cont++;
+                continue;
+            }
+
+            System.out.println(linha);
+            String[] jogadores = linha.split(",");
+            int numero_jogadores = jogadores.length;
+            Tatica tatica = taticas.get(taticas_linha.get(tat));
+
+            double x,espaco_x;
+            if(tatica.espacamento.equals("agrupados")){
+              espaco_x = compactacaoLinhaAgrupado/numero_jogadores;
+              x = (larguraCampo - compactacaoLinhaAgrupado)/2 + espaco_x/2;
+            }else{
+              espaco_x = compactacaoLinhaEsparso/numero_jogadores;
+              x = (larguraCampo - compactacaoLinhaEsparso)/2 + espaco_x/2;
+            }
+
+            System.out.println(tatica.nome);
+            for (int i = 0; i < numero_jogadores; i++){
+                print("plt.text(");
+                print(String.valueOf(x));
+                print(",");
+                print(String.valueOf(y+100));
+                print(",");
+                x += espaco_x;
+                String nomeJogador = ctx.lista_jog_tat.get(counter).l_jog_esq.get(i).getText();
+                print("\'"+nomeJogador.substring(1,nomeJogador.length()-1)+"\', ");
+                println(" verticalalignment=\'bottom\',horizontalalignment=\'center\', color=\'white\', fontsize=10)");
+            }
+            counter++;
+            y = y - espaco_y;
+            cont++;
+            tat++;
+        }
+
         println("plot = plt.imshow(field, zorder=0)");
         println("plt.axis(\'off\')");
         println("plot.axes.get_xaxis().set_visible(False)");

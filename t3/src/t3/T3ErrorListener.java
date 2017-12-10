@@ -19,7 +19,7 @@ public class T3ErrorListener implements ANTLRErrorListener {
 
     @Override
     public void syntaxError(Recognizer<?, ?> rcgnzr, Object o, int i, int i1, String string, RecognitionException re) {
-    CommonToken ct=(CommonToken) o;
+      Saida.println(string);
 
     }
 

@@ -44,7 +44,7 @@ public class Main {
                 writer.print(gc.toString());
                 writer.close();
                 Runtime run = Runtime.getRuntime();
-                run.exec("python3 saida.py");
+                run.exec("python3 " + args[1]);
                 return ;
             } catch (IOException e) {
                 e.printStackTrace();

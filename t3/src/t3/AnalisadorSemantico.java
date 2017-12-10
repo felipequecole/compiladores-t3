@@ -28,7 +28,13 @@ public class AnalisadorSemantico extends Tira_teimaBaseVisitor<Object>{
     if(ctx == null)
       return null;
     for(Token jogador : ctx.l_jog){
+      if(!tabela.existeSimbolo(jogador.getText())){
         tabela.adicionarSimbolo(jogador.getText(),"jogador");
+      }else{
+        Saida.println("Time:");
+        Saida.println("   Jogador "+jogador.getText()+" já declarado");
+
+      }
     }
     if( ctx.l_jog.size() != 10){
       Saida.println("Time:");
@@ -41,7 +47,12 @@ public class AnalisadorSemantico extends Tira_teimaBaseVisitor<Object>{
   public Object visitTaticas(Tira_teimaParser.TaticasContext ctx){
 
     for(Tira_teimaParser.Pos_taticaContext ptc: ctx.list_taticas ){
+      if(!tabela.existeSimbolo(ptc.IDENT().getText())){
         tabela.adicionarSimbolo(ptc.IDENT().getText(),"tatica");
+      }else{
+        Saida.println("Taticas:");
+        Saida.println("   Tatica " +ptc.IDENT().getText()+" já declarada anteriormente");
+      }
     }
     return null;
   }

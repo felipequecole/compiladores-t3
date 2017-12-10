@@ -56,8 +56,9 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
     @Override
     public void enterPrograma(Tira_teimaParser.ProgramaContext ctx) {
         println("import matplotlib.pyplot as plt");
-        println("field = plt.imread(\'campo.jpg\')");
-        println("bola = plt.imread(\'bola.png\')");
+        println("import os");
+        println("field = plt.imread(os.path.join(\'data\',\'campo.jpg\'))");
+        println("bola = plt.imread(os.path.join(\'data\', \'bola.png\'))");
         println("plot = plt.imshow(field)");
     }
 
@@ -98,10 +99,8 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
             }
             Tatica tatica = taticas.get(taticas_linha.get(cont));
             cont++;
-//            System.out.println(linha);
             String[] jogadores = linha.split(",");
             int numero_jogadores = jogadores.length;
-//            System.out.println(tatica.espacamento);
             double x,espaco_x;
             if(tatica.espacamento.equals("agrupados")){
               espaco_x = compactacaoLinhaAgrupado/numero_jogadores;
@@ -134,14 +133,11 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
         int tat = changeTeam.get(plots);
         cont = 0;
         for (String linha : this.linhas){
-//            System.out.println("entrou " + String.valueOf(cont));
             if (cont < changeTeam.get(plots)) {
-//                System.out.println("pulou " + String.valueOf(cont));
                 cont++;
                 continue;
             }
             cont++;
-//            System.out.println(linha);
             String[] jogadores = linha.split(",");
             int numero_jogadores = jogadores.length;
             Tatica tatica = taticas.get(taticas_linha.get(tat));
@@ -155,7 +151,6 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
               x = (larguraCampo - compactacaoLinhaEsparso)/2 + espaco_x/2;
             }
 
-//            System.out.println(tatica.nome);
             for (int i = 0; i < numero_jogadores; i++){
                 print("plt.arrow(");
                 print(String.valueOf(x));
@@ -189,14 +184,10 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
         }
 
         changeTeam.add(this.qtd_linhas);
-        System.out.println("Times: " + changeTeam.toString());
-
 
         // setas de defesa
         y =  comprimentoCampo -(comprimentoCampo - compactacao)/2 - espaco_y/2;
         tat = changeTeam.get(plots);
-//        System.out.println(tat);
-        System.out.println(taticas_linha.get(tat));
         cont = 0;
         for (String linha : this.linhas){
             if (cont < changeTeam.get(plots)) {
@@ -204,7 +195,6 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
                 continue;
             }
             cont++;
-//            System.out.println(linha);
             String[] jogadores = linha.split(",");
             int numero_jogadores = jogadores.length;
             Tatica tatica = taticas.get(taticas_linha.get(tat));
@@ -218,7 +208,6 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
               x = (larguraCampo - compactacaoLinhaEsparso)/2 + espaco_x/2;
             }
 
-//            System.out.println(tatica.nome);
             for (int i = 0; i < numero_jogadores; i++){
                 print("plt.arrow(");
                 print(String.valueOf(x+3));
@@ -254,8 +243,6 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
 
         y =  comprimentoCampo -(comprimentoCampo - compactacao)/2 - espaco_y/2;
         tat = changeTeam.get(plots);
-//        System.out.println(tat);
-//        System.out.println(taticas_linha.get(tat));
         cont = 0;
         int counter = 0;
         for (String linha : this.linhas){
@@ -264,7 +251,6 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
                 continue;
             }
 
-//            System.out.println(linha);
             String[] jogadores = linha.split(",");
             int numero_jogadores = jogadores.length;
             Tatica tatica = taticas.get(taticas_linha.get(tat));
@@ -278,7 +264,6 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
               x = (larguraCampo - compactacaoLinhaEsparso)/2 + espaco_x/2;
             }
 
-//            System.out.println(tatica.nome);
             for (int i = 0; i < numero_jogadores; i++){
                 print("plt.text(");
                 print(String.valueOf(x));
@@ -291,19 +276,16 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
                 println(" verticalalignment=\'bottom\',horizontalalignment=\'center\', color=\'white\', fontsize=10)");
             }
             counter++;
-            System.out.println("contador: " + String.valueOf(counter));
             y = y - espaco_y;
             cont++;
             tat++;
         }
-        System.out.println("saiu");
         println("plot = plt.imshow(field, zorder=0)");
         println("plt.axis(\'off\')");
         println("plot.axes.get_xaxis().set_visible(False)");
         println("plot.axes.get_yaxis().set_visible(False)");
         println("plt.savefig('saida_" + String.valueOf(plots) + ".png', bbox_inches='tight', pad_inches=-0.11)");
         println("plt.clf()");
-//        this.qtd_linhas = 0;
         plots++;
     }
 
@@ -315,8 +297,4 @@ public class GeradorDeCodigo extends Tira_teimaBaseListener {
         }
     }
 
-    @Override
-    public void exitTaticas(Tira_teimaParser.TaticasContext ctx) {
-//        System.out.println(taticas);
-    }
 }
